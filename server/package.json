@@ -1,0 +1,21 @@
+{
+  "name": "sim-station-server",
+  "version": "1.0.0",
+  "description": "Backend for SIM Station — remotely read SMS and listen to calls on your own SIM cards (Arduino Mega + SIM7600X)",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/launcher.js",
+    "dev": "node src/launcher.js",
+    "reset-network": "node src/reset-network.js",
+    "download-vosk-model": "node scripts/download-vosk-model.js"
+  },
+  "dependencies": {
+    "@serialport/parser-readline": "^12.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "serialport": "^12.0.0",
+    "socket.io": "^4.8.1"
+  }
+}

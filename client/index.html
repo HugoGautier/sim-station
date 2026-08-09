@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIM Station</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      :root, [data-theme="light"] {
+        --bg: #FFFFFF;
+        --bg-card: #F5F5F5;
+        --bg-msg: #EEF2FF;
+        --bg-msg-empty: #FFFFFF;
+        --bg-input: #FFFFFF;
+        --bg-btn: #E5E7EB;
+        --bg-header: #FFFFFF;
+        --text: #1F2937;
+        --text-secondary: #6B7280;
+        --text-muted: #9CA3AF;
+        --border: #E5E7EB;
+        --border-light: #F3F4F6;
+        --selected: #6366F1;
+        --activating: #F59E0B;
+        --queued: #9CA3AF;
+        --data-active: #C026D3;
+        --green: #22C55E;
+        --red: #EF4444;
+        --amber: #F59E0B;
+      }
+
+      [data-theme="dark"] {
+        --bg: #111827;
+        --bg-card: #1F2937;
+        --bg-msg: #374151;
+        --bg-msg-empty: #1F2937;
+        --bg-input: #374151;
+        --bg-btn: #4B5563;
+        --bg-header: #111827;
+        --text: #F9FAFB;
+        --text-secondary: #D1D5DB;
+        --text-muted: #9CA3AF;
+        --border: #374151;
+        --border-light: #1F2937;
+        --selected: #818CF8;
+        --activating: #FBBF24;
+        --queued: #6B7280;
+        --data-active: #E879F9;
+        --green: #34D399;
+        --red: #F87171;
+        --amber: #FBBF24;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        transition: background-color 0.2s, color 0.2s;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

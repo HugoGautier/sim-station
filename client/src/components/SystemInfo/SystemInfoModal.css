@@ -1,0 +1,310 @@
+.sysinfo-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: sysinfo-fade-in 0.15s ease-out;
+}
+
+@keyframes sysinfo-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sysinfo-modal {
+  background: var(--bg-card);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  width: 480px;
+  max-width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  animation: sysinfo-slide-up 0.2s ease-out;
+}
+
+@keyframes sysinfo-slide-up {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.sysinfo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.sysinfo-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.sysinfo-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--border-light);
+  border-radius: 8px;
+  font-size: 18px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s;
+}
+
+.sysinfo-close:hover {
+  background: var(--border);
+  color: var(--text);
+}
+
+.sysinfo-body {
+  padding: 16px 24px 24px;
+  overflow-y: auto;
+}
+
+.sysinfo-loading,
+.sysinfo-error {
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.sysinfo-loading { color: var(--text-secondary); }
+.sysinfo-error { color: var(--red); }
+
+.sysinfo-section {
+  margin-bottom: 20px;
+}
+
+.sysinfo-section:last-child {
+  margin-bottom: 0;
+}
+
+.sysinfo-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  margin: 0 0 10px;
+}
+
+.sysinfo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.sysinfo-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.sysinfo-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+}
+
+.sysinfo-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 9999px;
+}
+
+.badge-ok {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.badge-warn {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.badge-err {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+.sysinfo-empty {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 12px 0;
+}
+
+/* Tables */
+.sysinfo-table {
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.sysinfo-table-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 8px 12px;
+  background: var(--border-light);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.sysinfo-table-head.sysinfo-table-3col {
+  grid-template-columns: 100px 1fr 90px;
+}
+
+.sysinfo-table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--text);
+  border-top: 1px solid var(--border);
+}
+
+.sysinfo-table-row.sysinfo-table-3col {
+  grid-template-columns: 100px 1fr 90px;
+}
+
+/* Zebra striping. Tints are inline rgba so they sit slightly off the card
+ * background regardless of theme — using --bg-btn would collide with the
+ * --border colour in light mode and erase the column dividers. */
+.sysinfo-table-row:nth-child(even) {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .sysinfo-table-row:nth-child(even) {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Column separators — vertical dividers between cells. Apply to all
+ * direct children except the last so the last column has no trailing line. */
+.sysinfo-table-head > *:not(:last-child),
+.sysinfo-table-row > *:not(:last-child) {
+  border-right: 1px solid var(--border);
+  padding-right: 10px;
+  margin-right: 10px;
+}
+
+.sysinfo-port-path {
+  font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sysinfo-port-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #DBEAFE;
+  color: #1E40AF;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.sysinfo-port-device {
+  font-size: 12px;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sysinfo-port-vid {
+  font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.sysinfo-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.sysinfo-theme-toggle:hover {
+  background: var(--bg-btn);
+  border-color: var(--text-muted);
+}
+
+/* Logs panel */
+.sysinfo-logs {
+  background: #0F172A;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  max-height: 220px;
+  overflow-y: auto;
+  font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  padding: 6px 10px;
+  color: #E5E7EB;
+}
+
+.sysinfo-logs.sysinfo-logs-tall {
+  max-height: calc(80vh - 120px);
+}
+
+.sysinfo-logs-empty {
+  color: #9CA3AF;
+  font-style: italic;
+  padding: 2px 0;
+}
+
+.sysinfo-log-line {
+  display: flex;
+  gap: 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 1px 0;
+}
+
+.sysinfo-log-ts {
+  color: #64748B;
+  flex-shrink: 0;
+}
+
+.sysinfo-log-level {
+  flex-shrink: 0;
+  font-weight: 700;
+  min-width: 32px;
+}
+
+.sysinfo-log-level.lvl-info  { color: #60A5FA; }
+.sysinfo-log-level.lvl-warn  { color: #FBBF24; }
+.sysinfo-log-level.lvl-error { color: #F87171; }
+
+.sysinfo-log-msg {
+  color: #E5E7EB;
+  flex: 1;
+  min-width: 0;
+}

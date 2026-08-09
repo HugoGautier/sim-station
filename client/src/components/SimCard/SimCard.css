@@ -1,0 +1,33 @@
+/* SimCard styles are applied inline for component encapsulation */
+
+@keyframes simStatusPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* Pulsing outline for in-progress cards (activating / queued). Animates the
+ * BORDER colour (not an outer box-shadow) so the pulse stays inside the card
+ * and never gets clipped by the parent container's edge. The card sets
+ * --pulse-color inline to its current border colour, so the pulse matches the
+ * state (orange = activating, grey = queued). Replaces the old text badge. */
+@keyframes cardOutlinePulse {
+  0%, 100% { border-color: var(--pulse-color); }
+  50%      { border-color: color-mix(in srgb, var(--pulse-color) 30%, transparent); }
+}
+
+.live-transcript-fade {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(to right, var(--bg-btn), transparent);
+  pointer-events: none;
+}
+
+/* Hide the horizontal scrollbar on the live transcript while keeping the
+ * area scrollable. scrollbarWidth/msOverflowStyle handle Firefox + IE/Edge
+ * legacy; this rule handles WebKit (Chrome/Edge/Safari). */
+.live-transcript > div::-webkit-scrollbar {
+  display: none;
+}
